@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Grid, Typography, TextField, } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 
-const RoomJoin = () => {
+const JoinRoom = () => {
 
   const [roomCode, setRoomCode] = useState("");
   const [error, setError] = useState("");
@@ -58,4 +58,4 @@ const RoomJoin = () => {
   );
 };
 
-export default RoomJoin;
+export default JoinRoom;

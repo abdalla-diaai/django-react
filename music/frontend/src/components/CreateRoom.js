@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Button, Grid, Typography, TextField, FormControl, FormHelperText, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
 import { useNavigate, Link } from "react-router-dom";
 
-const CreateRoomPage = () => {
+const CreateRoom = () => {
 
   const defaultVotes = 2;
   const [guestCanPause, setGuestCanPause] = useState(true);
@@ -94,4 +94,4 @@ const CreateRoomPage = () => {
   );
 };
 
-export default CreateRoomPage;
+export default CreateRoom;
