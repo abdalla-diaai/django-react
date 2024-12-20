@@ -2,6 +2,7 @@ import React from "react";
 import { BrowserRouter as Router, Route, Routes, Link, Navigate } from "react-router-dom";
 import RoomJoin from "./RoomJoin";
 import CreateRoomPage from "./CreateRoomPage";
+import Room from "./Room";
 
 const HomePage = () => {
   return (
@@ -14,6 +15,7 @@ const HomePage = () => {
             </div>} />
           <Route path="/join" element={<RoomJoin />} />
           <Route path="/create" element={<CreateRoomPage />} />
+          <Route path="/room/:roomCode" element={<Room />} />
         </Routes>
       </Router>
     </div>
