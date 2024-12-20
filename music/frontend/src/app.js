@@ -6,7 +6,6 @@ import HomePage from "./components/HomePage";
 const App = () => {
   return (
     <div>
-      <h1>Music App</h1>
       <HomePage />
     </div>
   );
