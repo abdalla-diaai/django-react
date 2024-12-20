@@ -15,6 +15,5 @@ html, body {
 
 #app {
     width: 100%;
-    position: flex;
     height: 100%;
 }

@@ -1,12 +1,14 @@
 import React, { useState } from "react";
 import { Button, Grid, Typography, TextField, FormControl, FormHelperText, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
-import { Link } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 
 const CreateRoomPage = () => {
 
   const defaultVotes = 2;
   const [guestCanPause, setGuestCanPause] = useState(true);
   const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
+  const navigate = useNavigate();
+
 
   const handleVotesChange = (e) => {
     setVotesToSkip(e.target.value);
@@ -27,7 +29,7 @@ const CreateRoomPage = () => {
     };
     fetch("/api/create-room", requestOptions)
       .then((response) => response.json())
-      .then((data) => console.log(data));
+      .then((data) => navigate("/room/" + data.code));
   };
 
 

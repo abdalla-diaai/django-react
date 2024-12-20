@@ -18,9 +18,9 @@ const Room = () => {
                 return response.json();
             })
             .then((data) => {
-                setVotesToSkip(data.votes_to_skip);
-                setGuestCanPause(data.guest_can_pause);
-                setIsHost(data.is_host);
+                setVotesToSkip(data.votes_to_skip.toString());
+                setGuestCanPause(data.guest_can_pause.toString());
+                setIsHost(data.is_host.toString());
             });
     };
 
