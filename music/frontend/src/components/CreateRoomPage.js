@@ -3,7 +3,7 @@ import { Button, Grid, Typography, TextField, FormControl, FormHelperText, Radio
 import { Link } from "react-router-dom";
 
 const CreateRoomPage = () => {
-  defaultVotes = 2;
+  let defaultVotes = 2;
   return (
    <Grid container spacing={1}>
       <Grid item xs={12} align="center">
