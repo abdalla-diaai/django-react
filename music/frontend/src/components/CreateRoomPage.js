@@ -1,9 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button, Grid, Typography, TextField, FormControl, FormHelperText, Radio, RadioGroup, FormControlLabel, FormLabel } from "@mui/material";
 import { Link } from "react-router-dom";
 
 const CreateRoomPage = () => {
-  let defaultVotes = 2;
+
+  const defaultVotes = 2;
+  const [guestCanPause, setGuestCanPause] = useState(true);
+  const [votesToSkip, setVotesToSkip] = useState(defaultVotes);
+
+  const handleVotesChange = (e) => {
+    setVotesToSkip(e.target.value);
+  };
+
+  const handleGuestCanPauseChange = (e) => {
+    setGuestCanPause(e.target.value === "true");
+  };
+
+  const handleRoomButtonPressed = () => {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        votes_to_skip: votesToSkip,
+        guest_can_pause: guestCanPause,
+      }),
+    };
+    fetch("/api/create-room", requestOptions)
+      .then((response) => response.json())
+      .then((data) => console.log(data));
+  };
+
+
+
+
   return (
    <Grid container spacing={1}>
       <Grid item xs={12} align="center">
@@ -16,7 +45,7 @@ const CreateRoomPage = () => {
           <FormHelperText>
             <span align="center">Guest Control of Playback State</span>
           </FormHelperText>
-          <RadioGroup row defaultValue="true">
+          <RadioGroup row defaultValue="true" onChange={handleGuestCanPauseChange}>
             <FormControlLabel
               value="true"
               control={<Radio color="primary" />}
@@ -36,6 +65,7 @@ const CreateRoomPage = () => {
         <FormControl>
           <TextField
             required={true}
+            onChange={handleVotesChange}
             type="number"
             defaultValue={defaultVotes}
             inputProps={{
@@ -49,7 +79,7 @@ const CreateRoomPage = () => {
         </FormControl>
       </Grid>
       <Grid item xs={12} align="center">
-        <Button color="primary" variant="contained">
+        <Button color="primary" variant="contained" onClick={handleRoomButtonPressed}>
           Create A Room
         </Button>
       </Grid>
